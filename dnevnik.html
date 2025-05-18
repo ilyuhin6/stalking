@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дневник Воина | Путь Знания</title>
+  <style>
+    :root {
+      --primary: #5D4037;
+      --secondary: #3E2723;
+      --accent: #DAA520;
+      --dark: #1A120B;
+      --light: #F5F5DC;
+      --parchment: #F8F3E6;
+    }
+
+    body {
+      font-family: 'IM Fell English', serif;
+      background: var(--dark);
+      color: var(--light);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .diary-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: rgba(26, 18, 11, 0.8);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(218, 165, 32, 0.2);
+    }
+
+    .diary-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed var(--accent);
+    }
+
+    .diary-title {
+      font-family: 'Cinzel Decorative', cursive;
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    .diary-subtitle {
+      font-style: italic;
+      color: var(--light);
+      opacity: 0.8;
+    }
+
+    .entry-form {
+      margin-bottom: 2rem;
+    }
+
+    .entry-date {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-text {
+      width: 100%;
+      min-height: 200px;
+      background: var(--parchment);
+      color: var(--dark);
+      padding: 1rem;
+      border: 1px solid var(--primary);
+      font-family: 'IM Fell English', serif;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    .entry-tags {
+      margin-top: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--accent);
+      padding: 0.3rem 0.6rem;
+      margin-right: 0.5rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .entry-actions {
+      margin-top: 1rem;
+      text-align: right;
+    }
+
+    .btn-save {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-family: 'Cinzel Decorative', cursive;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-save:hover {
+      background: var(--light);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .past-entries {
+      margin-top: 3rem;
+    }
+
+    .entry-card {
+      background: rgba(61, 43, 31, 0.6);
+      border-left: 3px solid var(--accent);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .entry-card:hover {
+      background: rgba(94, 66, 53, 0.8);
+    }
+
+    .entry-card-date {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-card-content {
+      color: var(--light);
+    }
+
+    .entry-card-tags {
+      margin-top: 0.5rem;
+    }
+
+    .no-entries {
+      text-align: center;
+      font-style: italic;
+      color: var(--light);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="diary-container">
+    <!-- Заголовок -->
+    <div class="diary-header">
+      <h1 class="diary-title">Дневник Воина</h1>
+      <p class="diary-subtitle">"Только тот, кто записывает свои битвы, может увидеть узор своей судьбы."</p>
+    </div>
+
+    <!-- Форма новой записи -->
+    <div class="entry-form">
+      <div class="entry-date" id="current-date"></div>
+      <textarea class="entry-text"
+        placeholder="Опиши свой сегодняшний путь... Какие битвы ты выиграл? Какие уроки извлек?"></textarea>
+
+      <div class="entry-tags">
+        <span class="tag">Сталкинг</span>
+        <span class="tag">Сновидение</span>
+        <span class="tag">Перепросмотр</span>
+        <span class="tag">Озарение</span>
+      </div>
+
+      <div class="entry-actions">
+        <button class="btn-save">Сохранить в Кольцо Времени</button>
+        <a href="/">exit</a>
+      </div>
+    </div>
+
+    <!-- Прошлые записи -->
+    <div class="past-entries">
+      <h3 style="color: var(--accent); border-bottom: 1px solid var(--secondary); padding-bottom: 0.5rem;">Архив Пути
+      </h3>
+
+      <div class="entry-card">
+        <div class="entry-card-date">15 мая 2023 | Полнолуние</div>
+        <div class="entry-card-content">
+          Сегодня я осознал, как часто играю роль "обиженного". Это просто маска, за которой прячется мой страх быть
+          отвергнутым. Дон Хуан сказал бы: "Сними эту маску — она слишком тяжела для воина".
+        </div>
+        <div class="entry-card-tags">
+          <span class="tag">Перепросмотр</span>
+          <span class="tag">Озарение</span>
+        </div>
+      </div>
+
+      <div class="entry-card">
+        <div class="entry-card-date">8 мая 2023 | Убывающая луна</div>
+        <div class="entry-card-content">
+          Во сне я встретил своего духа-союзника — им оказалась лиса. Она вела меня через темный лес, и я понял: моя
+          сила в умении адаптироваться, а не в грубой силе.
+        </div>
+        <div class="entry-card-tags">
+          <span class="tag">Сновидение</span>
+        </div>
+      </div>
+
+      <div class="no-entries" id="no-entries" style="display: none;">
+        Твой дневник пока пуст. Сделай первую запись — пусть смерть знает, что ты не тратил время зря.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Установка текущей даты
+    const now = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('current-date').textContent = now.toLocaleDateString('ru-RU', options);
+
+    // Если нет записей — показать сообщение
+    if (document.querySelectorAll('.entry-card').length === 0) {
+      document.getElementById('no-entries').style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>

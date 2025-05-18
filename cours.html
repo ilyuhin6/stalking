@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 принципов сталкинга | Путь Воина</title>
+  <style>
+    :root {
+      --primary: #5D4037;
+      --secondary: #3E2723;
+      --accent: #DAA520;
+      --dark: #1A120B;
+      --light: #F5F5DC;
+      --parchment: #F8F3E6;
+    }
+
+    body {
+      font-family: 'IM Fell English', serif;
+      background: var(--dark);
+      color: var(--light);
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      min-height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+    }
+
+    .body-overlay {
+      background: rgba(26, 18, 11, 0.9);
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+    }
+
+    /* Основной контент */
+    .course-main {
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Описание курса */
+    .course-description {
+      background: rgba(61, 43, 31, 0.6);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .course-description h2 {
+      font-family: 'Cinzel Decorative', cursive;
+      color: var(--accent);
+      margin-top: 0;
+      border-bottom: 1px dashed var(--accent);
+      padding-bottom: 0.5rem;
+    }
+
+    /* Сайдбар с принципами */
+    .principles-sidebar {
+      background: rgba(61, 43, 31, 0.8);
+      border-left: 1px solid var(--accent);
+      padding: 2rem 1rem;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+    }
+
+    .principle-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .principle-link {
+      display: block;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .principle-link:hover {
+      border-left: 3px solid var(--accent);
+      background: rgba(218, 165, 32, 0.1);
+    }
+
+    .principle-link.active {
+      border-left: 3px solid var(--accent);
+      background: rgba(218, 165, 32, 0.2);
+      font-weight: bold;
+    }
+
+    .principle-number {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 25px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* Контент принципа */
+    .principle-content {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+
+    .principle-content.active {
+      display: block;
+    }
+
+    .principle-header {
+      border-bottom: 1px dashed var(--accent);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .principle-title {
+      font-family: 'Cinzel Decorative', cursive;
+      color: var(--accent);
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .principle-subtitle {
+      font-style: italic;
+      color: var(--light);
+      opacity: 0.8;
+    }
+
+    .principle-quote {
+      background: rgba(218, 165, 32, 0.1);
+      padding: 1rem;
+      border-left: 3px solid var(--accent);
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    .practice-card {
+      background: rgba(61, 43, 31, 0.6);
+      border: 1px solid var(--primary);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 5px;
+    }
+
+    .practice-title {
+      color: var(--accent);
+      font-family: 'Cinzel Decorative', cursive;
+      margin-top: 0;
+    }
+
+    .practice-steps {
+      padding-left: 1.5rem;
+    }
+
+    .practice-steps li {
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-practice {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      font-family: 'Cinzel Decorative', cursive;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+
+    .btn-practice:hover {
+      background: var(--light);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        grid-template-columns: 1fr;
+      }
+
+      .principles-sidebar {
+        height: auto;
+        position: static;
+        border-left: none;
+        border-top: 1px solid var(--accent);
+      }
+
+      .principle-nav {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+      }
+
+      .principle-link {
+        white-space: nowrap;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+      }
+
+      .principle-link:hover,
+      .principle-link.active {
+        border-left: none;
+        border-bottom: 3px solid var(--accent);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="body-overlay">
+    <!-- Основной контент -->
+    <main class="course-main">
+      <!-- Описание курса -->
+      <section class="course-description">
+        <h2>Путь Сталкинга: Искусство осознанного восприятия</h2>
+        <p>Этот курс раскрывает 7 фундаментальных принципов сталкинга — древней практики воинов Толтеков, переданных
+          Карлосу Кастанеде его учителем доном Хуаном.</p>
+
+        <h3>Что даст вам курс:</h3>
+        <ul>
+          <li>Навыки <strong>энергосбережения</strong> в повседневной жизни</li>
+          <li>Техники <strong>безупречного действия</strong> без лишних усилий</li>
+          <li>Методы <strong>перепросмотра</strong> и очищения прошлого</li>
+          <li>Умение <strong>видеть</strong> вместо просто смотреть</li>
+          <li>Практики <strong>остановки внутреннего диалога</strong></li>
+        </ul>
+
+        <blockquote class="principle-quote">
+          "Сталкер — это не тот, кто прячется, а тот, кто видит. Видит себя, видит других, видит структуру мира."
+        </blockquote>
+      </section>
+
+      <!-- Принцип 1 (активный по умолчанию) -->
+      <article id="principle-1" class="principle-content active">
+        <header class="principle-header">
+          <h1 class="principle-title">Принцип 1: Охотник</h1>
+          <p class="principle-subtitle">Искусство быть недостижимым</p>
+        </header>
+
+        <blockquote class="principle-quote">
+          "Охотник знает одно: он охотится. Он не позволяет себе отвлекаться."<br>
+          — Дон Хуан
+        </blockquote>
+
+        <div class="principle-text">
+          <p>Первый принцип сталкинга учит сохранять энергию, оставаясь "невидимым" для социальных игр и манипуляций.
+            Это не физическая скрытность, а состояние сознания.</p>
+        </div>
+
+        <section class="practice-card">
+          <h3 class="practice-title">Практика: Тень на стене</h3>
+          <ol class="practice-steps">
+            <li>Выбери день для наблюдения</li>
+            <li>В общественных местах представляй себя невидимым</li>
+            <li>Отмечай, как люди пытаются вовлечь тебя в свои игры</li>
+            <li>Фиксируй наблюдения в дневнике</li>
+          </ol>
+          <button class="btn-practice">Начать практику</button>
+        </section>
+
+        <section class="practice-card">
+          <h3 class="practice-title">Упражнение: Минимальные жесты</h3>
+          <ol class="practice-steps">
+            <li>В течение 2 часов сократи движения на 50%</li>
+            <li>Делай только необходимые жесты</li>
+            <li>Обрати внимание, как это меняет восприятие тебя другими</li>
+          </ol>
+          <button class="btn-practice">Начать упражнение</button>
+        </section>
+      </article>
+
+      <!-- Остальные принципы (скрыты по умолчанию) -->
+      <article id="principle-2" class="principle-content">
+        <!-- Контент для принципа 2 -->
+      </article>
+      <!-- ... -->
+    </main>
+
+    <!-- Сайдбар с навигацией -->
+    <aside class="principles-sidebar">
+      <nav>
+        <ul class="principle-nav">
+          <li>
+            <a href="#principle-1" class="principle-link active">
+              <span class="principle-number">1</span>
+              Охотник
+            </a>
+          </li>
+          <li>
+            <a href="#principle-2" class="principle-link">
+              <span class="principle-number">2</span>
+              Безупречность
+            </a>
+          </li>
+          <li>
+            <a href="#principle-3" class="principle-link">
+              <span class="principle-number">3</span>
+              Сновидящий
+            </a>
+          </li>
+          <li>
+            <a href="#principle-4" class="principle-link">
+              <span class="principle-number">4</span>
+              Сталкер
+            </a>
+          </li>
+          <li>
+            <a href="#principle-5" class="principle-link">
+              <span class="principle-number">5</span>
+              Воин
+            </a>
+          </li>
+          <li>
+            <a href="#principle-6" class="principle-link">
+              <span class="principle-number">6</span>
+              Нагваль
+            </a>
+          </li>
+          <li>
+            <a href="#principle-7" class="principle-link">
+              <span class="principle-number">7</span>
+              Человек знания
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  </div>
+
+  <script>
+    // Переключение между принципами
+    document.querySelectorAll('.principle-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Удаляем активный класс у всех ссылок и контента
+        document.querySelectorAll('.principle-link').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.principle-content').forEach(el => el.classList.remove('active'));
+
+        // Добавляем активный класс к текущей
+        this.classList.add('active');
+        const targetId = this.getAttribute('href');
+        document.querySelector(targetId).classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+</html>

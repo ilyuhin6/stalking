@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место Силы | Путь Воина</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./style/normalize.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <style>
+    :root {
+      --primary-color: #5D4037;
+      --secondary-color: #3E2723;
+      --accent-color: #DAA520;
+      --dark-color: #1A120B;
+      --light-color: #F5F5DC;
+      --smoke-color: #E0E0E0;
+    }
+
+    body {
+      font-family: 'IM Fell English', serif;
+      color: var(--light-color);
+      background-color: var(--dark-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .power-place {
+      padding: 40px 20px;
+
+    }
+
+
+
+
+    .power-place::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('./img/power/power-bg.jpg') no-repeat center center;
+      background-position: center;
+      min-height: 100vh;
+      background-repeat: repeat-y;
+      opacity: 0.15;
+      z-index: -1;
+      border-radius: 8px;
+    }
+
+
+
+    .power-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 1rem;
+    }
+
+    .power-title {
+      font-family: 'Cinzel Decorative', cursive;
+      color: var(--accent-color);
+      font-size: 2.5rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .power-subtitle {
+      font-style: italic;
+      color: var(--smoke-color);
+    }
+
+    .power-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .power-card {
+      background: rgba(26, 18, 11, 0.8);
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .power-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent-color);
+    }
+
+    .power-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent-color);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .power-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .card-title {
+      font-family: 'Cinzel Decorative', cursive;
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-top: 0;
+      text-align: center;
+      border-bottom: 1px dashed var(--primary-color);
+      padding-bottom: 0.5rem;
+      margin: 0;
+    }
+
+    .card-desc {
+      color: var(--smoke-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-btn {
+      display: block;
+      text-align: center;
+      background: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .card-btn:hover {
+      background: var(--accent-color);
+      color: var(--dark-color);
+    }
+
+    .totem-users {
+      grid-column: 1 / -1;
+      background: rgba(61, 43, 31, 0.7) !important;
+      padding: 10px 30px;
+    }
+
+    .totem-users-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+
+    }
+
+    .totem-users-settings {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      max-width: 400px;
+      border: 1px solid var(--accent-color);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .totem-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .power-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="power-bg">
+    <div class="power-place">
+      <div class="container">
+        <header class="power-header">
+          <h1 class="power-title">МЕСТО СИЛЫ</h1>
+          <p class="power-subtitle">"Воин принимает ответственность за все свои поступки, даже за самые малые" — Карлос
+            Кастанеда</p>
+        </header>
+
+        <div class="power-grid">
+          <!-- 7 принципов сталкинга -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-paw"></i></div>
+            <h3 class="card-title">7 Принципов Сталкинга</h3>
+            <p class="card-desc">Изучите древние техники наблюдения и взаимодействия с миром, которые помогут вам стать
+              невидимым для хищников обыденности.</p>
+            <a href="./cours.html" class="card-btn">Войти в курс</a>
+          </div>
+
+          <!-- Дневник воина -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-book"></i></div>
+            <h3 class="card-title">Дневник Воина</h3>
+            <p class="card-desc">Записывайте свои битвы, победы и озарения. Только тот, кто фиксирует свой путь, может
+              увидеть узор судьбы.</p>
+            <a href="./dnevnik.html" class="card-btn">Открыть дневник</a>
+          </div>
+
+          <!-- Виртуальные костры -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-fire"></i></div>
+            <h3 class="card-title">Круги у Костра</h3>
+            <p class="card-desc">Место встречи воинов, где можно делиться опытом и получать совет от тех, кто уже прошел
+              часть пути.</p>
+            <a href="#" class="card-btn">Присоединиться</a>
+          </div>
+
+          <!-- Карта сновидений -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-moon"></i></div>
+            <h3 class="card-title">Карта Сновидений</h3>
+            <p class="card-desc">Фиксируйте свои путешествия во втором внимании и находите точки сборки в мире снов.</p>
+            <a href="#" class="card-btn">Начать картографию</a>
+          </div>
+
+          <!-- Техники перепросмотра -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-recycle"></i></div>
+            <h3 class="card-title">Перепросмотр</h3>
+            <p class="card-desc">Техники очищения прошлого и освобождения энергии, запертой в старых событиях.</p>
+            <a href="#" class="card-btn">Практиковать</a>
+          </div>
+
+          <!-- Личный тотем -->
+          <div class="power-card totem-users">
+            <h2 class="totem-users-title">Кокон воина</h2>
+            <div class="totem-users-wrapper">
+              <div class="totem-users-settings">
+                <img src="./img/power/avatar.png" alt="Тотемное животное" class="totem-image">
+                <h3 class="card-title">Дон Хуан Матус</h3>
+                <p class="card-desc">Ваш Тональ - это остров повседневного осознания. Как скульптор, лепящий свою
+                  реальность, вы формируете мир через фильтр своих личных настроек.</p>
+                <a href="#" class="card-btn">Узнать больше</a>
+              </div>
+
+              <!-- Панель юзера -->
+              <div class="body-overlay">
+                <div class="container">
+                  <!-- Блок "Точка Сборки" -->
+                  <div class="assembly-point">
+                    <h2 class="ap-title">Текущая точка сборки</h2>
+                    <p class="ap-subtitle">Текущее положение твоего осознания</p>
+
+                    <!-- Блок ранга -->
+                    <div class="rank-container">
+                      <div class="rank-icon">🦅</div>
+                      <div class="rank-info">
+                        <h3 class="rank-name"><span style="color: #DAA520;">Уровень: - </span>Сталкер</h3>
+                        <p class="rank-description">Ты освоил искусство наблюдения. Теперь мир - твое зеркало, а люди -
+                          учителя, даже не подозревая об этом.</p>
+                        <div class="progress-container">
+                          <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Блоки опыта -->
+                    <div class="experience-grid">
+                      <div class="exp-card">
+                        <span class="exp-icon">📖</span>
+                        <span class="exp-count">24</span>
+                        <span class="exp-label">записей сталкинга</span>
+                      </div>
+
+                      <div class="exp-card">
+                        <span class="exp-icon">🔄</span>
+                        <span class="exp-count">13</span>
+                        <span class="exp-label">сеансов перепросмотра</span>
+                      </div>
+
+                      <div class="exp-card">
+                        <span class="exp-icon">🌙</span>
+                        <span class="exp-count">7</span>
+                        <span class="exp-label">карт сновидений</span>
+                      </div>
+
+                      <div class="exp-card">
+                        <span class="exp-icon">🔥</span>
+                        <span class="exp-count">3</span>
+                        <span class="exp-label">костра с воинами</span>
+                      </div>
+                    </div>
+
+                    <!-- Цитата -->
+                    <div class="ap-quote">
+                      "Сталкер знает, что мир - это иллюзия, но относится к ней с безупречной серьезностью. В этом его
+                      сила."
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+
+          <!-- Архетипы Нагваля -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-mask"></i></div>
+            <h3 class="card-title">Архетипы Нагваля</h3>
+            <p class="card-desc">Определите свой тип энергии и узнайте свои сильные стороны на пути знания.</p>
+            <a href="#" class="card-btn">Пройти диагностику</a>
+          </div>
+
+          <!-- Коллекция цитат -->
+          <div class="power-card">
+            <div class="card-icon"><i class="fas fa-quote-right"></i></div>
+            <h3 class="card-title">Сокровищница Мудрости</h3>
+            <p class="card-desc">Коллекция ключевых цитат из учений дона Хуана для ежедневной практики.</p>
+            <a href="#" class="card-btn">Открыть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="audio">
+    <div class="container">
+      <audio src="./sound/red-women.mp3" controls></audio>
+    </div>
+  </div>
+
+  <script>
+    // Анимация для карточек - случайное мерцание
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.power-card');
+
+      function randomGlow() {
+        cards.forEach(card => {
+          if (Math.random() > 0.7) {
+            card.style.boxShadow = `0 0 ${Math.random() * 20}px rgba(218, 165, 32, ${Math.random() * 0.5})`;
+            setTimeout(() => {
+              card.style.boxShadow = 'none';
+            }, 300);
+          }
+        });
+
+        setTimeout(randomGlow, 1000);
+      }
+
+      randomGlow();
+    });
+  </script>
+</body>
+
+</html>
